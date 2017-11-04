@@ -33,8 +33,8 @@ public class Scanner {
     public File[] getJars() {
         if(jars == null) {
 
-            log.debugln("Scan start : " + System.getProperty("user.dir") + "/plugins");
-            File jarDir = new File(System.getProperty("user.dir") + "/plugins");
+            log.debugln("Scan start : " + System.getProperty("user.dir") + "/modules");
+            File jarDir = new File(System.getProperty("user.dir") + "/modules");
 
             jars = jarDir.listFiles(pathname -> pathname.getName().endsWith(".jar"));
 
@@ -58,7 +58,7 @@ public class Scanner {
     public List<Class<?>> scanPlugins(String jarName, Class searchTarget) {
         List<Class<?>> plugins = null;
         try {
-            File pluginDir = new File(System.getProperty("user.dir") + "/plugins/" + jarName);
+            File pluginDir = new File(System.getProperty("user.dir") + "/modules/" + jarName);
             log.debugln("Load success : " + pluginDir.getName());
             plugins = loadClassesInJar(pluginDir.toString(), searchTarget);
         } catch (Exception e) {
